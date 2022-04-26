@@ -1,6 +1,7 @@
-from Pregunta import Pregunta
-from Ronda1 import ronda_1
-from Juego import Juego
+from Entidades.Pregunta import Pregunta
+from Entidades.Ronda1 import ronda_1
+from Entidades.Juego import Juego
+from Vista.ui import Interface
 
 banco_preguntas = []
 for Ronda1 in ronda_1:
@@ -14,9 +15,11 @@ for Ronda1 in ronda_1:
     banco_preguntas.append(new_pregunta)
 
 juego = Juego(banco_preguntas)
+juego_ui = Interface()
 
-while juego.todavia_tiene_preguntas():
-    juego.siguiente_pregunta()
+# while juego.todavia_tiene_preguntas():
+#     juego.siguiente_pregunta()while juego.todavia_tiene_preguntas():
+#     juego.siguiente_pregunta()
 
 print("Fin del Juego")
 print(f"Puntuacion final: {juego.score}/{juego.numero_pregunta}")
