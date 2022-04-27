@@ -6,14 +6,11 @@ from Vista.ui import Interface
 banco_preguntas = []
 banco_preguntas = []
 for Ronda1 in ronda_1:
-    Ronda1_pregunta = Ronda1["pregunta"]
-    Ronda1_respuestas = Ronda1["respuestas"]
-    Ronda1_respuesta = Ronda1["respuesta"]
-    Ronda1_respuesta_incorrecta = Ronda1["respuesta_incorrecta"]
-    Ronda1_categoria = Ronda1["categoria"]
-    Ronda1_dificultad = Ronda1["dificultad"]
-    new_pregunta = Pregunta(Ronda1_pregunta, Ronda1_respuestas,Ronda1_respuesta, Ronda1_categoria,Ronda1_dificultad,Ronda1_respuesta_incorrecta)
-    banco_preguntas.append(new_pregunta)
+    Ronda1_pregunta = Ronda1["question"]
+    Ronda1_respuesta_correcta = Ronda1["correct_answer"]
+    Ronda1_respuestas_incorrectas = Ronda1["incorrect_answers"]
+    new_question = Pregunta(Ronda1_pregunta, Ronda1_respuesta_correcta, Ronda1_respuestas_incorrectas)
+    banco_preguntas.append(new_question)
 
 juego = juego(banco_preguntas)
 juego_ui = Interface(juego)

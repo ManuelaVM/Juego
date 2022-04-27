@@ -30,7 +30,7 @@ class Interface:
 
 
         self.A_button = Button(
-            text="Hola",
+            text="A",
             background="hot pink",
             padx=20,
             #command=self.respuesta_A
@@ -38,7 +38,7 @@ class Interface:
         self.A_button.place(x=50, y=400)
 
         self.B_button = Button(
-            text="Hola",
+            text="B",
             background="violet red",
             padx=20,
             #command=self.respuesta_B
@@ -46,7 +46,7 @@ class Interface:
         self.B_button.place(x=50,y=450)
 
         self.C_button = Button(
-            text="Hola",
+            text="C",
             background="SeaGreen1",
             padx=20,
             #command=self.respuesta_C
@@ -54,7 +54,7 @@ class Interface:
         self.C_button.place(x=150,y=400)
 
         self.D_button = Button(
-            text="Hola",
+            text="D",
             background="OliveDrab1",
             padx=20,
             #command=self.respuesta_D

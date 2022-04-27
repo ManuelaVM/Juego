@@ -1,4 +1,4 @@
-#Anime , Facil
+#Deportes , Dificil
 import requests
 
 parameters = {
@@ -9,4 +9,4 @@ parameters = {
 response = requests.get("https://opentdb.com/api.php", params=parameters)
 response.raise_for_status()
 data = response.json()
-ronda_2 = data["results"]
+ronda_4 = data["results"]

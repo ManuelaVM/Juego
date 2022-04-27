@@ -1,3 +1,6 @@
+import random
+from Ronda1 import ronda_1
+
 class juego:
 
     def __init__(self, q_lista):
@@ -10,6 +13,8 @@ class juego:
 
     def siguiente_pregunta(self):
         self.pregunta_actual = self.lista_pregunta[self.numero_pregunta]
+        for i in range(1):
+            ronda_1_jugador = random.sample(ronda_1, 1)
         self.numero_pregunta += 1
         return f"Q.{self.numero_pregunta}:{self.pregunta_actual.pregunta} "
         #respuesta_usuario = input(f"Q.{self.numero_pregunta}: {pregunta_actual.pregunta}: {pregunta_actual.respuestas} : ")

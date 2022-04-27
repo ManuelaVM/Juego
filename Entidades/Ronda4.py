@@ -1,4 +1,4 @@
-#Anime , Facil
+#Animales , Medio
 import requests
 
 parameters = {
@@ -6,7 +6,7 @@ parameters = {
     "type": "multiple",
 }
 
-response = requests.get("https://opentdb.com/api.php", params=parameters)
+response = requests.get("https://opentdb.com/api.phps", params=parameters)
 response.raise_for_status()
 data = response.json()
-ronda_2 = data["results"]
+ronda_4 = data["results"]

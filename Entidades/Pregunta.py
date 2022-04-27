@@ -1,9 +1,6 @@
 class Pregunta:
 
-    def __init__(self, q_pregunta,q_respuestas, q_respuesta, q_categoria,q_dificultad,q_respuesta_incorrecta):
+    def __init__(self, q_pregunta,q_respuesta_correcta, q_respuestas_incorrectas):
         self.pregunta = q_pregunta
-        self.respuestas = q_respuestas
-        self.respuesta = q_respuesta
-        self.respuesta_incorrecta = q_respuesta_incorrecta
-        self.categoria = q_categoria
-        self.dificultad = q_dificultad
+        self.respuesta_correcta = q_respuesta_correcta
+        self.respuestas_incorrectas = q_respuestas_incorrectas

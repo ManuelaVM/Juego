@@ -1,32 +1,16 @@
-ronda_1 = [
-    {"categoria": "Mitologia",
-     "dificultad": "Facil",
-     "pregunta": "¿Quién fue el único dios de Grecia que no recibió un cambio de nombre en Roma? ",
-     "respuestas": "Apolo,Deméter,Zeus,Atenea",
-     "respuesta": "Apolo",
-     "respuesta_incorrecta": ["Deméter", "Zeus", "Atenea"]},
-    {"categoria": "Mitologia",
-     "dificultad": "Facil",
-     "pregunta": "¿El dios griego poseidon era el dios de?",
-     "respuestas": "El mar, La guerra, El sol, El fuego",
-     "respuesta": "El mar",
-     "respuesta_incorrecta": ["La guerra", "El sol", "El fuego"]},
-    {"categoria": "Mitologia",
-     "dificultad": "Facil",
-     "pregunta": "¿Qué personaje de la mitología griega viajó al inframundo para devolver a su esposa Eurídice a la tierra de los vivos?",
-     "respuestas": "Orfeo, Hércules, Perseo, Dédalo",
-     "respuesta": "Orfeo",
-     "respuesta_incorrecta": ["Hércules", "Perseo", "Dédalo"]},
-    {"categoria": "Mitologia",
-     "dificultad": "Facil",
-     "pregunta": "¿En la mitología griega, ¿quién es el dios del vino??",
-     "respuestas": "Dionisio, Hefesto, Deméter, Apolo",
-     "respuesta": "Dionisio",
-     "respuesta_incorrecta": ["Hefesto", "Deméter", "Apolo"]},
-    {"categoria": "Mitologia",
-     "dificultad": "Facil",
-     "pregunta": "¿En la mayoría de las tradiciones, ¿quién era la esposa de Zeus? ?",
-     "respuestas": "Hera, Afrodita, Atenea, Hestia",
-     "respuesta": "Hera",
-     "respuesta_incorrecta": ["Afrodita", "Atenea", "Hestia"]},
-]
+#Geografia, Facil
+import requests
+
+parameters = {
+    "amount": 10,
+    "type": "multiple",
+}
+
+response = requests.get("https://opentdb.com/api.php", params=parameters)
+response.raise_for_status()
+data = response.json()
+ronda_1 = data["results"]
+
+
+
+
