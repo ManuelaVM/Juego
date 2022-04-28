@@ -11,17 +11,17 @@ class Interface:
 
         self.window = Tk()
         self.window.title("Juego")
-        self.window.config(padx=20, pady=20, bg=THEME_COLOR)
+        self.window.config(padx=150, pady=100, bg=THEME_COLOR)
+        self.window.resizable(False,False)
 
         self.score_label = Label(text="Score: 0", fg="#CAF0F8", bg=THEME_COLOR)
         self.score_label.grid(row=0, column=1)
 
-        self.ronda_label = Label(text="Ronda: 1", fg="#CAF0F8", bg=THEME_COLOR)
-        self.ronda_label.grid(row=0, column=2)
-
         self.categoria_label = Label(text=(self.juego.ronda_categoria()), fg="#CAF0F8", bg=THEME_COLOR)
         self.categoria_label.grid(row=0, column=3)
 
+        self.categoria_dificultad = Label(text=(self.juego.ronda_dificultad()), fg="#CAF0F8", bg=THEME_COLOR)
+        self.categoria_dificultad.grid(row=0, column=5)
 
         self.canvas = Canvas(width=300, height=250, bg="#CAF0F8")
         self.Ronda1_pregunta = self.canvas.create_text(
@@ -33,39 +33,47 @@ class Interface:
             font=("Arial", 20, "italic")
         )
 
-        self.canvas.grid(row=2, column=0, columnspan=2, pady=100)
+        self.canvas.grid(row=3, column=0, columnspan=3, pady=100)
 
         self.A_button = Button(
-            text=(self.juego.A()),
+            text=(self.juego.mostrar_A()),
             background="hot pink",
-            padx=20,
+            width=30,
             command=self.resultado_A
         )
-        self.A_button.place(x=20, y=400)
+        self.A_button.place(x=350, y=110)
 
         self.B_button = Button(
-            text=(self.juego.B()),
+            text=(self.juego.mostrar_B()),
             background="violet red",
-            padx=20,
+            width=30,
             command=self.resultado_B
         )
-        self.B_button.place(x=20, y=450)
+        self.B_button.place(x=350, y=150)
 
         self.C_button = Button(
-            text=(self.juego.C()),
+            text=(self.juego.mostrar_C()),
             background="SeaGreen1",
-            padx=20,
+            width=30,
             command=self.resultado_C
         )
-        self.C_button.place(x=150, y=400)
+        self.C_button.place(x=350, y=200)
 
         self.D_button = Button(
-            text=(self.juego.D()),
+            text=(self.juego.mostrar_D()),
             background="OliveDrab1",
-            padx=20,
+            width=30,
             command=self.resultado_D
         )
-        self.D_button.place(x=150, y=450)
+        self.D_button.place(x=350, y=250)
+
+        self.Terminar_button = Button(
+            text="Terminar Juego 😼",
+            background="OliveDrab1",
+            width=30,
+            command=self.Terminar_Juego
+        )
+        self.Terminar_button.place(x=350,y=349)
 
         self.canvas.grid(row=1, column=0, columnspan=2)
 
@@ -74,8 +82,32 @@ class Interface:
         self.window.mainloop()
 
     def get_pregunta(self):
-        q_text = self.juego.mostrar_pregunta()
-        self.canvas.itemconfig(self.Ronda1_pregunta, text=q_text)
+            self.canvas.config(bg="#CAF0F8")
+            if self.juego.todavia_tiene_preguntas():
+                self.score_label.config(text=f"Score: {self.juego.score}")
+                q_text = self.juego.mostrar_pregunta()
+                q_respuesta_a = self.juego.mostrar_A()
+                q_respuesta_b = self.juego.mostrar_B()
+                q_respuesta_c = self.juego.mostrar_C()
+                q_respuesta_d = self.juego.mostrar_D()
+                q_categoria = self.juego.ronda_categoria()
+                q_dificultad = self.juego.ronda_dificultad()
+                self.canvas.itemconfig(self.Ronda1_pregunta, text=q_text)
+                self.categoria_label.config(text=q_categoria)
+                self.categoria_dificultad.config(text=q_dificultad)
+                self.A_button.config(self.A_button, text=q_respuesta_a)
+                self.B_button.config(self.B_button, text=q_respuesta_b)
+                self.C_button.config(self.C_button, text=q_respuesta_c)
+                self.D_button.config(self.D_button, text=q_respuesta_d)
+                self.Terminar_button
+
+            else:
+                self.canvas.itemconfig(self.Ronda1_pregunta, text="")
+                self.A_button.config(state="disabled")
+                self.B_button.config(state="disabled")
+                self.C_button.config(state="disabled")
+                self.D_button.config(state="disabled")
+
 
     def resultado_A(self):
         entradaA = self.juego.entradaA()
@@ -103,5 +135,13 @@ class Interface:
         if is_right:
             self.canvas.config(bg="green")
         else:
-            self.canvas.config(bg="red")
+            self.canvas.config(bg="red", state="disabled")
+            self.A_button.config(state="disabled")
+            self.B_button.config(state="disabled")
+            self.C_button.config(state="disabled")
+            self.D_button.config(state="disabled")
         self.window.after(1000, self.get_pregunta)
+
+    def Terminar_Juego(self):
+        reiniciar =self.canvas.itemconfig(self.Ronda1_pregunta, text="Bye...")
+        return f"{reiniciar}"
