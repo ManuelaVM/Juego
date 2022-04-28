@@ -1,7 +1,5 @@
-import tkinter as tk
 from tkinter import *
 from Entidades.Juego import juego
-from Entidades.Ronda1 import *
 
 
 THEME_COLOR = "#03045E"
@@ -21,6 +19,8 @@ class Interface:
         self.ronda_label = Label(text="Ronda: 1", fg="#CAF0F8", bg=THEME_COLOR)
         self.ronda_label.grid(row=0, column=2)
 
+        self.categoria_label = Label(text=(self.juego.ronda_categoria()), fg="#CAF0F8", bg=THEME_COLOR)
+        self.categoria_label.grid(row=0, column=3)
 
 
         self.canvas = Canvas(width=300, height=250, bg="#CAF0F8")
@@ -39,7 +39,7 @@ class Interface:
             text=(self.juego.A()),
             background="hot pink",
             padx=20,
-            #command=self.true_pressed
+            command=self.resultado_A
         )
         self.A_button.place(x=20, y=400)
 
@@ -47,7 +47,7 @@ class Interface:
             text=(self.juego.B()),
             background="violet red",
             padx=20,
-            #command=self.false_pressed
+            command=self.resultado_B
         )
         self.B_button.place(x=20, y=450)
 
@@ -55,7 +55,7 @@ class Interface:
             text=(self.juego.C()),
             background="SeaGreen1",
             padx=20,
-            #command=self.false_pressed
+            command=self.resultado_C
         )
         self.C_button.place(x=150, y=400)
 
@@ -63,7 +63,7 @@ class Interface:
             text=(self.juego.D()),
             background="OliveDrab1",
             padx=20,
-            #command=self.false_pressed
+            command=self.resultado_D
         )
         self.D_button.place(x=150, y=450)
 
@@ -74,18 +74,34 @@ class Interface:
         self.window.mainloop()
 
     def get_pregunta(self):
-        q_text = self.juego.siguiente_pregunta()
+        q_text = self.juego.mostrar_pregunta()
         self.canvas.itemconfig(self.Ronda1_pregunta, text=q_text)
-        #buton_A = self.juego.A()
-        #self.A_button.config(self.A_button, text=buton_A)
-        #self.A_button.config(self.juego.pregunta_actual(), text=self.juego.siguiente_pregunta(opcionA))
 
-    #def true_pressed(self):
-    #      self.give_feedback(self.juego.comprobar_respuesta({self.juego.comprobar_respuesta(self.juego.pregunta_actual.respuesta_correcta)}))
+    def resultado_A(self):
+        entradaA = self.juego.entradaA()
+        is_right = self.juego.comprobar_respuesta(entradaA)
+        self.Resultado_Pregunta(is_right)
 
-    #def false_pressed(self):
-    #      self.give_feedback(self.juego.comprobar_respuesta({self.juego.comprobar_respuesta(self.juego.pregunta_actual.respuestas_incorrectas)}))
+    def resultado_B(self):
+        entradaB = self.juego.entradaB()
+        self.Resultado_Pregunta(self.juego.comprobar_respuesta(entradaB))
 
-    # def true_pressed(self):
-    #     self.give_feedback(self.quiz.check_answer("True"))
 
+    def resultado_C(self):
+        entradaC = self.juego.entradaC()
+        is_right = self.juego.comprobar_respuesta(entradaC)
+        self.Resultado_Pregunta(is_right)
+
+
+    def resultado_D(self):
+        entradaD = self.juego.entradaD()
+        is_right = self.juego.comprobar_respuesta(entradaD)
+        self.Resultado_Pregunta(is_right)
+
+
+    def Resultado_Pregunta(self, is_right):
+        if is_right:
+            self.canvas.config(bg="green")
+        else:
+            self.canvas.config(bg="red")
+        self.window.after(1000, self.get_pregunta)

@@ -9,7 +9,9 @@ for Ronda1 in ronda_1:
     Ronda1_pregunta = Ronda1["question"]
     Ronda1_respuesta_correcta = Ronda1["correct_answer"]
     Ronda1_respuestas_incorrectas = Ronda1["incorrect_answers"]
-    new_question = Pregunta(Ronda1_pregunta, Ronda1_respuesta_correcta, Ronda1_respuestas_incorrectas)
+    Ronda1_categoria = Ronda1["category"]
+    Ronda1_dificultad = Ronda1["difficulty"]
+    new_question = Pregunta(Ronda1_pregunta, Ronda1_respuesta_correcta, Ronda1_respuestas_incorrectas, Ronda1_categoria, Ronda1_dificultad)
     banco_preguntas.append(new_question)
 
 juego = juego(banco_preguntas)
