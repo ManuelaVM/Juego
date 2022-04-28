@@ -1,3 +1,7 @@
+# _____________________________________________________________________________
+    # Autora: Manuela Valencia Montoya
+    # _____________________________________________________________________________
+
 class Pregunta:
 
     def __init__(self, q_pregunta,q_respuesta_correcta, q_respuestas_incorrectas, q_categoria, q_dificultad):

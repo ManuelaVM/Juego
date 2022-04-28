@@ -1,4 +1,7 @@
-#Mitologia , Medio
+# _____________________________________________________________________________
+# Las preguntas fueron obtenidas de esta https://opentdb.com/api_config.php
+# database de preguntas, la categoria de esta Ronda es Mitología y es medio
+# _____________________________________________________________________________
 import requests
 
 parameters = {

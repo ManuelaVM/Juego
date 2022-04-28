@@ -1,4 +1,7 @@
-#Anime , Facil
+# _____________________________________________________________________________
+# Las preguntas fueron obtenidas de esta https://opentdb.com/api_config.php
+# database de preguntas, la categoria de esta Ronda es Anime y es facil
+# _____________________________________________________________________________
 import requests
 
 parameters = {

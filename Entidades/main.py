@@ -1,4 +1,7 @@
-import random
+# _____________________________________________________________________________
+    # Autora: Manuela Valencia Montoya
+    # _____________________________________________________________________________
+
 from Entidades.Pregunta import Pregunta
 from Entidades.Ronda1 import ronda_1
 from Entidades.Ronda2 import ronda_2
@@ -9,6 +12,9 @@ from Entidades.Juego import juego
 from Vista.ui import Interface
 
 
+# _____________________________________________________________________________
+# Este es el archivo ejecutable para este proyecto.
+# _____________________________________________________________________________
 banco_preguntas = []
 
 for Ronda1 in ronda_1:
@@ -62,10 +68,5 @@ for Ronda5 in ronda_5:
 juego = juego(banco_preguntas)
 juego_ui = Interface(juego)
 
-# while juego.todavia_tiene_preguntas():
-#     juego.siguiente_pregunta()while juego.todavia_tiene_preguntas():
-#     juego.siguiente_pregunta()
 
-#print("Fin del Juego")
-#print(f"Puntuacion final: {juego.score}/{juego.numero_pregunta}")
 

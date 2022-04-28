@@ -1,3 +1,6 @@
+# _____________________________________________________________________________
+    # Autora: Manuela Valencia Montoya
+    # _____________________________________________________________________________
 from tkinter import *
 from Entidades.Juego import juego
 
@@ -6,8 +9,15 @@ THEME_COLOR = "#03045E"
 
 class Interface:
 
+    # _____________________________________________________________________________
+    # Metodo cerebro de la interfaz
+    # _____________________________________________________________________________
     def __init__(self,Juego: juego):
         self.juego = Juego
+
+        # _____________________________________________________________________________
+        # Interfaz e interacción con el usuario
+        # _____________________________________________________________________________
 
         self.window = Tk()
         self.window.title("Juego")
@@ -81,6 +91,9 @@ class Interface:
 
         self.window.mainloop()
 
+    # _____________________________________________________________________________
+    # Metodo de ejecución interfaz
+    # _____________________________________________________________________________
     def get_pregunta(self):
             self.canvas.config(bg="#CAF0F8")
             if self.juego.todavia_tiene_preguntas():
@@ -95,19 +108,22 @@ class Interface:
                 self.canvas.itemconfig(self.Ronda1_pregunta, text=q_text)
                 self.categoria_label.config(text=q_categoria)
                 self.categoria_dificultad.config(text=q_dificultad)
-                self.A_button.config(self.A_button, text=q_respuesta_a)
-                self.B_button.config(self.B_button, text=q_respuesta_b)
-                self.C_button.config(self.C_button, text=q_respuesta_c)
-                self.D_button.config(self.D_button, text=q_respuesta_d)
+                self.A_button.config(text=q_respuesta_a)
+                self.B_button.config(text=q_respuesta_b)
+                self.C_button.config(text=q_respuesta_c)
+                self.D_button.config(text=q_respuesta_d)
                 self.Terminar_button
 
             else:
-                self.canvas.itemconfig(self.Ronda1_pregunta, text="")
+                self.canvas.itemconfig(self.Ronda1_pregunta, text="End Game")
                 self.A_button.config(state="disabled")
                 self.B_button.config(state="disabled")
                 self.C_button.config(state="disabled")
                 self.D_button.config(state="disabled")
 
+    # _____________________________________________________________________________
+    # Ingreso de objetos y metodos de la clase Juego
+    # _____________________________________________________________________________
 
     def resultado_A(self):
         entradaA = self.juego.entradaA()
